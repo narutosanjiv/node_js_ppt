@@ -1,0 +1,98 @@
+:css
+  pre {
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    margin-left: -140px;
+  }
+%div#node_js_presentation
+  .slide
+    %h1#prelogo
+      Introduction to
+    %h1#logo
+      Node Js
+    .footer
+      Sanjiv Kumar Jha
+      = link_to "@narutosanjiv", "http://twitter.com/narutosanjiv"
+  .slide
+    %h1
+      How Node JS evolve
+    %ul
+      %li
+        Ryan Dahl in JSConf 2009 introduced a project
+      %li
+        Project was platform for combining V8 engine and event loop.
+      %li 
+        Later project named as Node Js
+      %li
+        Currently Used by Large companies like LinkedIn, Microsoft, Walmart , yahoo        
+  .slide
+    %h1
+      What is node ? and why needed? 
+    %ul
+      %li
+        Node.js is compilation of Google's V8 JavaScript engine, the libUV platform abstraction layer, and a core library
+      %li
+        Written in Javascript and c(c++).
+      %li
+        Goal was to create the design functionality of push notification just like Gmail.
+      %li
+        To provide Web application ability to perform non-blocking , event-driven I/O operation.
+      %li
+        libuv is a new platform layer for Node
+      %li
+        Its purpose is to abstract IOCP on Windows and epoll/kqueue/event ports/etc.
+  .slide
+    %h1
+      Why v8 javascript engine ?
+    %ul
+      %li
+        V8 JavaScript VM is used in Google Chrome. V8(Lars Bak) is open-source
+      %li
+        No JIT, all JavaScript is compiled to assembler
+      %li
+        Hidden classes optimization from self(V8 does not dynamically look up access properties unlike other js engine).
+      %li
+        Improved garbage collector 
+      %li
+        V8 is many times faster than JScript (in Internet Explorer), SpiderMonkey (in Firefox), and JavaScriptCore (in Safari)
+      
+  .slide
+    %h1
+      Node.js vs Traditional Server
+    %ul
+      %li
+        Highly scalable system that uses asynchronous event-driven I/O (input/output in nginx, node js), rather than threads or separate processes(apache)
+      %li
+        Each time a web resource is requested, Apache creates a separate thread or invokes a new process in order to process the request.
+      %li
+        Even though Apache responds quickly to requests, and cleans up after the request has been satisfied, this approach can still tie up
+        a lot of resources. A popular web application is going to have serious performance issues.
+      %li
+        Node doesn't block any other request while waiting for the event functionality to complete, and events are processed first served, in a
+        relatively uncomplicated event loop.
+  .slide
+    %h1
+      Setting up a Node Development Environment
+    %ul
+      %li
+        Package installers are provided for both Windows and Mac OS
+      %li
+        For Windows, Go to http://nodejs.org/download/ and download window binary.
+      %li
+        For Linux, you can either download linux binary but it is recommend to install from source.
+
+      %li
+        Before Installing, install dependency of Node Js.
+        %pre
+          %span.atv{style: 'overflow-x:'}
+            sudo apt-get install build-essential openssl 
+            libssl-dev pkg-config
+      %span
+        Continue .....
+:javascript
+  $(document).ready(function(){
+    $('#node_js_presentation') .fathom();
+  })

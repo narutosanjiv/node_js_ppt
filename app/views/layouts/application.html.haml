@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title NodeJsPpt
+    = stylesheet_link_tag    "application", :media => "all"
+    %link{:href => "http://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,bold,bolditalic", :rel => "stylesheet", :type => "text/css"}/
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    = yield
