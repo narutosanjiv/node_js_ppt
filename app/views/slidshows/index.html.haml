@@ -201,10 +201,57 @@
         process.chdir()
       %li
         process.env
-      %li 
-        process.argv
+  .slide
+    %h1
+      Global Object : Process
+    %ul
+      %li
+        When executing a file with the node executable process.argv provides access to the argument vector,
+        the first value being the node executable, second being the filename, and remaining values being the
+        arguments passed
+        %pre
+          %span.atv
+            process.argv
+      %li
+        The process.exit() method is synonymous with the C function exit(), in which an exit code > 0 is passed to indicate failure, or 0 is passed to indicate success.
+        %pre
+          %span.atv
+            process.exit()
+  .slide
+    %h1
+      Global Object : Process
+    %ul
+      %li
+        process.on(): ->
+        The process itself is an EventEmitter, allowing you to do things like listen for uncaught exceptions via
+        the uncaughtException event(see example of event).
+      %li
+        process.kill(): ->
+        process.kill() method sends the signal passed to the given pid, defaulting to SIGINT(see the example).
+      %li
+        errno: -> The process object is host of the error numbers
+        For example, process.EPERM represents a permission based error, while process.ENOENT represents a missing file or directory.
+            
+  .slide
+    %h1
+      Node Js Modules: Events
+    %ul
+      %li
+        Node Events emitter is basic building block of Node js framework.
+      %li
+        Node's core module events supplies us with a single constructor, EventEmitter
+      %li
+        Typically an object inherits from EventEmitter.
+      %li
+        We can define any number of callbacks using the emitter.on() method,
+        which accepts the name of the event and arbitrary objects passed as data
+      %li
+        When emitter.emit() is called,
+        we are only required to pass the event name, followed by any number of arguments 
+        (see example event emitter). 
 
 
+    
 
       
 :javascript
