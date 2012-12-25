@@ -6,6 +6,7 @@
     white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word; /* Internet Explorer 5.5+ */
     margin-left: -140px;
+    height: 106px;    
   }
 %div#node_js_presentation
   .slide
@@ -86,12 +87,126 @@
 
       %li
         Before Installing, install dependency of Node Js.
-        %pre
+        %pre{style: 'height:106px;'}
           %span.atv{style: 'overflow-x:'}
             sudo apt-get install build-essential openssl 
             libssl-dev pkg-config
       %span
         Continue .....
+  .slide
+    %h1
+      Node Js Installation continue 
+    %ul
+      %li
+        Download the Node tarball from official site of node js.
+        %pre
+          %span.atv
+            wget http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz
+      %li
+        Once downloaded, unzip and untar the file:
+        %pre
+          %span.atv
+            tar -zxf node-v0.6.18.tar.gz
+      %li
+        Change into the directory and issue the following
+        commands to compile and install Node:
+        %pre
+          %span.atv
+            \./configure
+            make
+            sudo make install
+      %li
+        Above three command require 
+        %em
+          make
+        utility in unix or linux based system to run makefile based on system installation.
+
+  .slide
+    %h1
+      Node Js Installation continue 
+    %ul
+      %li
+        Note in last command root privileges required, but node can be installed locally as explained below.
+      %li
+        Setting the prefix configuration option to a given path in your home directory installs Node locally.
+        .pre
+          %span.atv
+            \./configure --prefix=$(HOME_DIR_WHATEVER_NAME)
+            make & make install
+          %span.atv
+            echo 'export PATH=~/$(HOME_DIR_WHATEVER_NAME)/bin:${PATH}' >> ~/\.bashrc
+      
+      %li
+        There are two different Windows infrastructures for Node Js on Window System. 
+      %li
+        One is the new Windows Azure cloud platforms that allows developers to host applications in a remote service, called a
+        cloud. 
+  .slide
+    %h1
+      Javascript and Node js
+    %ul
+      %li
+        Earlier Javascript is used as scripting and then its is being used for browser and front-end stuff.
+      %li
+        Javascript in browser defines what you can do with languages but does not define what languages can do.
+      %li
+        Node.js allow prommer to write code in backend.
+      %li
+        Node.js is really two things: a runtime environment and a library.
+
+  .slide 
+    %h1
+      Node Js in Action
+    %ul
+      %li
+        Originally Node Js organize as module in different file.
+      %li
+        Node's module system discourages the use of globals
+      %li
+        But exception to above line is 
+        %em
+          process 
+        and
+        %em
+          console 
+      %li
+        Console object contains several methods which are used to output information to stdout or stderr
+      %li
+        Frequently used console method is console.log(), which simply writes to stdout and appends a line feed (\n).
+      %li
+        %pre
+          %span.atv
+            console.log('wahoo');
+            console.log({ foo: 'bar' });
+      %li
+        We will now run sample app.
+  .slide
+    %h1
+      Global Object
+    %ul
+      %li
+        %pre
+          %span.atv
+            console.assert(connected, 'Database connection failed');
+        Asserts that the given expression is truthy, or throws an exception.
+      %li
+        Next Global Object: Process
+      %li
+        process.version
+      %li
+        process.execPath
+      %li
+        process.cwd()
+      %li
+        process.chdir()
+      %li
+        process.env
+      %li 
+        process.argv
+
+
+
+      
 :javascript
   $(document).ready(function(){
     $('#node_js_presentation') .fathom();
