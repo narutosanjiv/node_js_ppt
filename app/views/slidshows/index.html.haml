@@ -318,7 +318,30 @@
         The callback will fire when the I/O operation is done, and in the mean time, the application can continue to process other I/O bound requests
       %li
         Given this model, what process.nextTick() actually does is defer the execution of an action till the next pass around the event loop.
-      
+      %li
+        Let's take a simple example. If we had a function foo() which we wanted to invoke in the next tick, this is how we do it:
+  .slide
+    %h1
+      Understanding process.nextTick()
+    %ul
+      %li
+        %pre
+          %span.atv
+            function foo() {
+            console.log('foo');
+            }
+            process.nextTick(foo);
+            console.log('bar');
+      %li
+        bar will be printed in your console before foo, as we have delayed the invokation of foo() till the next tick of the event loop.
+      %li
+        In fact, We can get the same result by using setTimeout() this way:
+        %br/
+        setTimeout(foo, 0);
+        %br/
+        console.log('bar');
+
+
   .slide
     %h1
       Understanding Modules
@@ -443,7 +466,11 @@
         (see live example). 
       
   .slide
-    
+    = image_tag "event_in_dom.jpeg"
+  .slide
+    = image_tag "node_event.jpeg"
+  .slide
+    = image_tag "custom_event.jpeg"
         
 :javascript
   $(document).ready(function(){
