@@ -278,7 +278,7 @@
       Understanding Module
     %ul
       %li
-        Node has several modules compiled into its binary distribution
+        Node has several modules compiled into its binary distribution called core modules.
       %li
         Core modules are referred to solely by the module name — not the path.
       %li
@@ -293,7 +293,33 @@
         var http = require('http');
 
       %li
-        
+        In case of Loading from Folder, node will presume this folder is a package and will
+        try to look for a package definition(package.json).
+
+  .slide
+    %h1
+      Understanding Module
+    %ul
+      %li
+        If the module name is not relative and is not a core module, Node will try to find it inside the
+        node_modules folder in the current directory
+      %li
+        For instance, if we do the following, Node will try to look for the file ./node_modules/myModule.js:
+        %br/
+        var myModule = require('myModule.js');
+      %li
+        We can also load a non-core module from the file system by providing the absolute path or relative path like this:
+        %br/
+        Absolute Path like this:
+        var myModule = require('/home/pedro/my_modules/my_module');
+        %br/
+        Relative Path like this:
+        var myModule = require('../my_modules/my_module');
+        var myModule2 = require('./lib/my_module_2');
+      %li
+        Module First find with file without .js extension and if fails then it append .js extension and search is all above case.
+
+
 
   .slide
     %h1
