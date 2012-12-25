@@ -231,7 +231,70 @@
       %li
         errno: -> The process object is host of the error numbers
         For example, process.EPERM represents a permission based error, while process.ENOENT represents a missing file or directory.
-            
+
+  .slide
+    %h1
+      Understanding Modules
+    %ul
+      %li
+        In Node, modules are referenced either by fi le path or by name.
+      %li
+        A module that is referenced by a
+        name will eventually map into a file path unless the module is a core module
+      %li
+        Each module of any type exposes a public API that the programmer can use
+      %li
+        To use a module of any type, you have to use the require function
+        like this:
+        %br/
+        var module = require('module_name');
+      %li
+        The require function returns
+        an object that represents the JavaScript API exposed by the module
+
+  .slide 
+    %h1
+      Understanding Modules
+    %ul
+      %li
+        The CommonJS module system is the only way objects or functions can be shared among files in
+        Node
+      %li
+        Having a require
+        function call in your code does not change the state of the global namespaces
+      %li
+        If the module is found and doesn’t contain a syntax or initialization error,
+        calling require()simply returns the module object
+      %li
+        Module can be loaded by different way : 
+        %br/
+        1) Loading Core Mudule
+        2) Loading a File Module
+        3) Loading a Folder Module
+        4) Loading from the node_modules Folder
+
+  .slide
+    %h1
+      Understanding Module
+    %ul
+      %li
+        Node has several modules compiled into its binary distribution
+      %li
+        Core modules are referred to solely by the module name — not the path.
+      %li
+        Core modules are preferentially loaded even if a
+        third-party module exists with the same name
+      %li
+        For instance, if we wanted to load 
+        %em
+          http core module
+        we would be doing following:
+        %br/
+        var http = require('http');
+
+      %li
+        
+
   .slide
     %h1
       Node Js Modules: Events
@@ -249,11 +312,24 @@
         When emitter.emit() is called,
         we are only required to pass the event name, followed by any number of arguments 
         (see example event emitter). 
+  
+  .slide
+    %h1
+      Node Js :remove Event Listeners
+    %ul
+      %li
+        Event listeners are simply functions which are called when we emit() an event.
+      %li
+        We can remove these listeners by calling the removeListener(type, callback) method.
+      %li
+        We call removeListener() with the same
+        arguments that we passed to on() originally.
+      %li
+        We could also have used removeAllListeners(type),
+        which removes all listeners registered to the given type.
+        (see live example). 
 
-
-    
-
-      
+        
 :javascript
   $(document).ready(function(){
     $('#node_js_presentation') .fathom();
