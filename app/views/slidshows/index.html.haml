@@ -8,6 +8,14 @@
     margin-left: -140px;
     height: 106px;    
   }
+  pre.minht{
+    height: 50px;
+    overflow: hidden;
+  }
+  img{
+    width: 920px;
+
+  }
 %div#node_js_presentation
   .slide
     %h1#prelogo
@@ -46,6 +54,8 @@
       %li
         Its purpose is to abstract IOCP on Windows and epoll/kqueue/event ports/etc.
   .slide
+    = image_tag "javascript_for_node.jpeg"
+  .slide
     %h1
       Why v8 javascript engine ?
     %ul
@@ -74,6 +84,56 @@
       %li
         Node doesn't block any other request while waiting for the event functionality to complete, and events are processed first served, in a
         relatively uncomplicated event loop.
+  .slide
+    %h1 
+      Blocking Vs Non-Blocking
+    %ul
+      %li
+        Blocking Code
+        %pre
+          %span
+            Read file from Filesystem, set equal to “contents”
+            Print contents
+            Do something else
+      %li
+        Non-Blocking Code
+        %br/
+        %span
+          Read file from Filesystem
+          whenever you’re complete, print the contents(this concept is actually callback).
+          Do Something else
+  .slide
+    = image_tag "blocking_vs_non_blocking.jpeg"
+
+  .slide
+    %h1 
+      Event Loop I/O in Node Js
+    %ul
+      %li
+        Node Js uses an event loop.
+      %li
+        Code like this
+        %br/
+        %pre.minht
+          %span.atv
+            var result = db.query("select * from users");
+          %br/
+        Allows to blocks the entire process or
+        implies multiple execution stacks.
+      
+      %li
+        Code like this
+        %br/
+        %pre.minht
+          %span.atv
+            db.query("select * from users", function (result) {});
+          %br/
+        allows the program to return to the event loop immediately.
+      %li
+        This is how I/O should be done.
+
+  .slide
+    = image_tag "event_loop.jpeg"
   .slide
     %h1
       Setting up a Node Development Environment
@@ -154,6 +214,7 @@
       %li
         Node.js is really two things: a runtime environment and a library.
 
+  
   .slide 
     %h1
       Node Js in Action
@@ -320,7 +381,7 @@
         Module First find with file without .js extension and if fails then it append .js extension and search is all above case.
 
 
-
+      
   .slide
     %h1
       Node Js Modules: Events
@@ -354,9 +415,11 @@
         We could also have used removeAllListeners(type),
         which removes all listeners registered to the given type.
         (see live example). 
-
+      
+  .slide
+    
         
 :javascript
   $(document).ready(function(){
-    $('#node_js_presentation') .fathom();
+    $('#node_js_presentation').fathom();
   })
