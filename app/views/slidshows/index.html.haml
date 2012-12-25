@@ -471,7 +471,58 @@
     = image_tag "node_event.jpeg"
   .slide
     = image_tag "custom_event.jpeg"
-        
+  .slide
+    %h1
+      Node Js : FileSystem
+    %ul
+      %li
+        To work with the filesystem, node provides the "fs" module.
+      %li
+        The commands emulate the POSIX operations,
+        and most methods work synchronously or asynchronously
+      %li
+        Basic Example:
+        %pre{style: 'height: 200px;'}
+          %span.atv
+            var fs = require('fs');
+            fs.mkdir('./helloDir',0777, function (err) {
+            if (err) throw err;
+            fs.writeFile('./helloDir/message.txt', 'Hello Node', 
+            function (err) {
+            if (err) throw err;
+            console.log('file created with contents:');
+            fs.readFile('./helloDir/message.txt','UTF-8' ,
+            function (err, data) {
+            if (err) throw err;
+            console.log(data);
+            });
+            });
+            })
+      %li
+        Each callback is placed in the previous callback — these are referred to as
+        chainable callbacks
+      %li
+        The example can be rewritten to use a synchronous approach:
+        %br/
+        This can be acheived by appending 'Sync' to all filesytem function.
+  .slide
+    %h1
+      NodeJs :Filesystem api
+    %ul
+      %li
+        The fs.Stats object contains information about a particular file or directory.
+      %li
+        This can be used to determine
+        what type of object we're working with
+      %li
+        The fs.watchfile method monitors a file and fires an event whenever the file is changed.
+      %li 
+        See live example
+  - stream_pattern = File.join("#{Rails.root}/app/assets/images/", "*stream*.jpeg")
+  -  Dir.glob(stream_pattern).sort.each do|image_name|
+    .slide
+      = image_tag File.basename(image_name).to_s
+      
 :javascript
   $(document).ready(function(){
     $('#node_js_presentation').fathom();
