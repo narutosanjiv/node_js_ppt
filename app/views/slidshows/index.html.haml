@@ -551,9 +551,9 @@
         Avoid Same/similar header data being transferred each time over the wire.
       %li
         The webservers supporting WebSockets are:
-        %br
-        %pre
-          1) Jetty 2)Node.js with Socket.IO 3)IIS 8 on Windows 8 4)Tornado
+        %br/
+        1)Jetty 2)Node.js with Socket.IO 
+        3)IIS 8 on Windows 8 4)Tornado
       %li
         IE 9 does not support WebSocket API at all
   .slide
@@ -561,9 +561,10 @@
       Socket.io
     %ul
       %li
-        Socket.IO aims to make realtime apps possible in every browser and mobile device.
+        It is a module for for node.js which enables socket like near real-time communication over browser
       %li
-        It is supporting on browser which does not yet support websocket.           
+        Socket.IO aims to make realtime apps possible in every browser and mobile device.
+             
       %li
         The code example on next slide show sample example of socket.io
 
@@ -590,6 +591,95 @@
                     console.log('Server has disconnected');
                 });
         });
+    
+    %p
+      It supports the following transport along with web sockets:
+      %br/
+      1) Xhr-polling 2) xhr-multipart 3) htmlfile 4) websocket
+      %br/
+      5) flashsocket 6) jsonp-polling
+    %p
+      So it support communication even with browsers where WebSocket is not supported.
+  .slide
+    %ul
+      %li
+        We need to add a reference socket.io.js. In this case I have referenced it from my node server itself.If the HTML is also rendered from the node server we can use relative path for the same.
+      %li
+        Create a socket and then bind the appropriate event listeners.
+      %li
+        The code shows two alerts once when it’s connected to the server and then when it receives the greet message from the server.
+    %pre{class: "brush: php; html-script: true", :type => "syntaxhighlighter"}
+      <html>
+      <title>WebSocket Client Demo</title>
+      <script src="http://localhost:8124/socket.io/socket.io.js"></script>
+      <script>
+      \//Create a socket and connect to the server
+      var socket = io.connect('http://localhost:8124/');
+      \//This event will be emitted once connection is made to the server
+      socket.on("connect",function(){
+      alert("Client has connected to the server");
+      });
+      \//This event will be client receives a "greet" message from server
+      socket.on('greet', function (data) {
+      alert(data.hello);
+      }
+      );
+      </script>
+      </html>
+  .slide
+    %h1
+      Socket.io communication 
+    %ul
+      %li
+        The general URL scheme followed by socket.io is
+        %br/
+        [scheme] ‘://’ [host] ‘/’ [namespace] ‘/’ [protocol version] ‘/’ [transport id] ‘/’ [session id] ‘/’ ( ‘?’ [query] )
+        %br/
+        %strong
+          Scheme 
+        http/https
+        %br/
+        %strong
+          Host
+        is the hostname of the socket server
+        %br/
+        %strong
+          Namespace
+        is the Socket.IO namespace default is socket.io
+        %br/
+        %strong
+          Protocol Version 
+        client support default is 1
+        %br/
+        %strong
+          Transport ID
+        is for different supported transports like WebSockets, xhr-polling etc.        
+        %br/
+        %strong
+          Session ID
+        the web socket session unique session id for the client.
+
+  .slide
+    %h1
+      Socket.io communication
+    %ul
+      %li
+        First a http request is issued as shown below with a timestamp parameter.
+      = image_tag "socket_communication.png", style: 'width: 820px;'
+  .slide
+    %h1
+      Socket.io communication
+    %ul
+      %li
+        Due to the absence of transport and session id server identifies this to be a new connection request and returns the following response containing session id and transport options.
+      = image_tag "socket_phase_1.png", style: 'width: 820px;'
+  .slide
+    %h1
+      Socket.io communication
+    %ul
+      %li
+        Here I am using Google Chrome which supports websocket so another request (HTTP 101 – Protocol Switching request) is issued switching the protocol to websocket as shown below.
+      = image_tag "socket_phase_2.png", style: 'width: 820px;'
   .slide
     %p{style:'margin-top:200px;'}
       %h1{style: 'color:#D14;'}

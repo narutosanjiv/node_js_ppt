@@ -16,6 +16,9 @@
 //= require fathom
 //= require shCore
 //= require shLegacy
+//= require shBrushXml
 //= require shBrushJScript
 //= require shBrushCss
-//= require shBrushRuby 
+//= require shBrushRuby
+//= require shBrushPlain
+//= require shBrushPhp  
