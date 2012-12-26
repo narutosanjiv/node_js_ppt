@@ -13,5 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require prettify
-//= require fathom 
-//= require_tree .
+//= require fathom
+//= require shCore
+//= require shLegacy
+//= require shBrushJScript
+//= require shBrushCss
+//= require shBrushRuby 
