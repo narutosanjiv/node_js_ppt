@@ -17,21 +17,30 @@ app.configure(function(){
 });
 
 var server = http.createServer(app);
-var io = socket.listen(server);
-
-
-server.listen(app.get('port'), function () {
-      console.log("Express server listening on port " + app.get('port'));
-});
 
 app.get('/', function(request, response) {
   response.sendfile(__dirname + "/index.html");
 });
 
+var io = socket.listen(server);
+server.listen(8080);
 
-io.sockets.on('connection', function(client) {
+
+io.sockets.on('connection', function(socket) {
   console.log('Client connected...');
-  client.emit('messages', { hello: 'world' });
+
+  socket.on('addme',function(username) {
+    socket.username = username;
+    socket.emit('chat', 'SERVER', 'You have connected');
+    socket.broadcast.emit('chat', 'SERVER', username + ' is on deck');
+  });
+  socket.on('sendchat', function(data) {
+    io.sockets.emit('chat', socket.username, data);
+  });
+  socket.on('disconnect', function() {
+    io.sockets.emit('chat', 'SERVER', socket.username + ' has left the building');
+  });
+
 });
 
 
