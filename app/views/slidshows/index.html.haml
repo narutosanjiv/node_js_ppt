@@ -544,9 +544,26 @@
       WebSocket
     %ul
       %li
-         Bidirectional full duplex communication.
+        Bidirectional full duplex communication.
       %li
-
+        Avoid Multiple Tcp connection 
+      %li
+        Avoid Same/similar header data being transferred each time over the wire.
+      %li
+        The webservers supporting WebSockets are:
+        %br
+        %pre
+          1) Jetty 2)Node.js with Socket.IO 3)IIS 8 on Windows 8 4)Tornado
+      %li
+        IE 9 does not support WebSocket API at all
+  .slide
+    %h1
+      Socket.io
+    %ul
+      %li
+        Socket.IO aims to make realtime apps possible in every browser and mobile device.
+      %li
+        
 
   .slide
     %p{style:'margin-top:200px;'}
