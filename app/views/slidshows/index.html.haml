@@ -527,7 +527,8 @@
   -  Dir.glob(stream_pattern).sort.each do|image_name|
     .slide
       = image_tag File.basename(image_name).to_s
-      
+  .slide
+    = image_tag "express_introduction.jpeg"  
 :javascript
   $(document).ready(function(){
     $('#node_js_presentation').fathom();
