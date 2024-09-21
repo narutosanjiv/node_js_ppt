@@ -21,7 +21,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'puma'
+gem 'puma', '>= 5.6.9'
 gem 'haml-rails'
 gem 'jquery-rails'
 
